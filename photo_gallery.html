@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <style>
+
+            body 
+            {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(196, 147, 147);
+            }
+
+            header 
+            {
+            background-color: rgb(137, 61, 51);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            }
+
+            main 
+            {
+            margin-top: 120px; 
+            margin-left:60px ;
+            margin-right:60px ;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            }
+
+            .grid-item 
+            {
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 10px;
+            }
+
+            img 
+            {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            }
+        </style>
+
+        <title>Photo Gallery</title>
+
+    </head>
+    
+    <body>
+
+        <header>
+            <h1>Photo Gallery</h1>
+        </header>
+
+        <main id="photo-grid">
+
+        </main>
+
+        <script>
+       
+            function createContent()
+            {
+                
+                const photoGrid = document.getElementById("photo-grid");
+
+                for (let row = 0; row < 3; row++) 
+                {
+                    for (let col = 0; col < 5; col++) 
+                    {
+
+                        const imageUrl = `https://source.unsplash.com/random/400x400?${row}${col}`;
+                        const gridItem = document.createElement("div");
+                        gridItem.classList.add("grid-item");
+
+                        const image = document.createElement("img");
+                        image.src = imageUrl;
+
+                        gridItem.appendChild(image);
+                        photoGrid.appendChild(gridItem);
+
+                    }
+                }
+            }        
+            
+            document.addEventListener("DOMContentLoaded", createContent());
+
+        </script>
+
+    </body>
+
+</html>
